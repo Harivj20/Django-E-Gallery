@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Album</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+</head>
+<body class="m-5">
+  
+  {% if user.is_authenticated %}
+    
+ 
+    
+  <div class="container">
+    <div class="d-flex justify-content-center ">
+        <br>
+        <br>
+        
+{% for msg in messages %}
+{{msg}}
+{% endfor %}
+             <div class="card">
+               <div class="card-header" style="text-align: center;">
+                Add Album
+               </div>
+                  <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                       {{form.as_p}}
+               
+                        {% csrf_token %}
+         
+                      <button class="btn btn-dark" value="submit">Submit</button>  
+                    </form>
+                   </div>
+               </div>
+               
+    </div>
+    <br>
+    <br>
+    <div class="d-flex justify-content-center ">
+    <a href="{% url 'new_category' %}" class="btn btn-dark" >Create New Categories</a>
+    </div>
+    {% endif %}
+</body>
+</html>
